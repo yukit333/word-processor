@@ -14,6 +14,8 @@ import org.jbox2d.dynamics.*;
 import processing.serial.*;
 import generativedesign.*;
 
+
+
 /*SETTING VALUES-----------------------------------------------------------*/
 Serial myPort; //Serial
 Physics physics; //BOXWRAP2D World
@@ -55,10 +57,7 @@ void setup() {
   myHTML = GenerativeDesign.loadHTMLAsync(this, "http://en.wikipedia.org/wiki/"+ searchWord, GenerativeDesign.HTML_CONTENT);
   font = loadFont("TrajanPro-Regular-48.vlw");
   /* SERIAL */
-  myPort = new Serial(this, Serial.list()[7], 9600);
-//  myPort = new Serial(this, "/dev/tty.usbmodemfd131", 115200, 'N', 8, 1.0);
-//  println(Serial.list());
-//  noLoop();
+//  myPort=new Serial(this,Serial.list()[4],9600);
 }
 
 
@@ -104,7 +103,7 @@ void draw() {
       
       if(textInner.length() > 10 && textCheck(textInner) == true) {
         textInner = textInner.replaceAll(" ", "_");
-//        println(textInner);
+        println(textInner);
         timerC++;
         if(timerC == 1) myHTML2 = GenerativeDesign.loadHTMLAsync(this, "http://en.wikipedia.org/wiki/"+ textInner, GenerativeDesign.HTML_CONTENT);
         if(timerC == 120) {
@@ -121,7 +120,7 @@ void draw() {
         }
         
       }else {
-//        println(textInner);
+        println(textInner);
         textInner = (String)myHTML.get(ceil(random(0, myHTML.size()-1)));
       }
     }
@@ -134,7 +133,7 @@ void draw() {
       
       if(textInner2.length() > 10 && textCheck(textInner2) == true) {
         textInner2 = textInner2.replaceAll(" ", "_");
-//        println(textInner2);
+        println(textInner2);
         timerC++;
         if(timerC == 1){
           myHTML = GenerativeDesign.loadHTMLAsync(this, "http://en.wikipedia.org/wiki/"+ textInner2, GenerativeDesign.HTML_CONTENT);
@@ -153,7 +152,7 @@ void draw() {
         }
         
       }else {
-//        println(textInner2);
+        println(textInner2);
         textInner2 = (String)myHTML2.get(ceil(random(0, myHTML2.size()-1)));
       }
       
@@ -248,7 +247,6 @@ void draw() {
       if(stringer.length() == 1 && stringer.indexOf(" ") != -1) {
         removeBox(i);
         return;
-        
       }
       if(stringer.length() > 1){
         lifer = lifer -2;
@@ -262,24 +260,33 @@ void draw() {
   }
   
   if(SerialValue == 21) {
-//    timerMix++;
-//    if(timerMix == 60) {
+    timerMix++;
+    if(timerMix >= 60) {
       for (int i=0; i < boxList.size() ; i++) {
       Body Bodier = (Body)(boxList.get(i));
-      Bodier.applyForce(pointTop.mul(Bodier.m_mass), pointTop);
+      Bodier.applyForce(pointMiddle.mul(Bodier.m_mass), pointMiddle);
       }
-//    }else if(timerMix > 60) {
-//      timerMix = 0;
-//    }
+      timerMix = 0;
+    }
   }
   
   if(keyPressed && key == 'r') {
     if(textInner != null) {
-      myHTML = GenerativeDesign.loadHTMLAsync(this, "http://en.wikipedia.org/wiki/"+ textInner, GenerativeDesign.HTML_CONTENT);
+      textInner = "Lagrange's_theorem";
     }else if(textInner2 != null) {
-      myHTML2 = GenerativeDesign.loadHTMLAsync(this, "http://en.wikipedia.org/wiki/"+ textInner2, GenerativeDesign.HTML_CONTENT);
+      textInner2 = "Lagrange's_theorem";
     }
+  }  
+  if(keyPressed && key == '1') {
+    SerialValue = 21;
+  }else if(keyPressed && key == '2') {
+    SerialValue = 12;
+  }else {
+    SerialValue = 22;
   }
+  
+    
+  println(SerialValue);
   
   textAlign(CORNER);
   fill(255, 80);
