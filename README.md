@@ -11,3 +11,7 @@ I noticed cooking and studying are so similar. Both of them examine, execute, di
 This installation art is metapher of human thinks and process of growing.
 
 When experiencers are facing this art, they give a little affect a human routines.
+
+## How it works
+Processing components are crawring wikipedia pages automatically and collecting words then stacking in screen.
+If experiencers push a button, disassemble to alphabets and mixed it up.
