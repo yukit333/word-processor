@@ -1,6 +1,4 @@
 void myCustomRenderer(World world) {
-
- 
   // iterate through the bodies
   Body body;
   for (body = world.getBodyList(); body != null; body = body.getNext()) {

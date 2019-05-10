@@ -1,8 +1,3 @@
-/*----------------------------------------------*/
-/*                WORD PROCESSOR                */
-/*----------------------------------------------*/
-
-/*IMPORT LIBRARIES-----------------------------------------------------------*/
 import org.jbox2d.util.nonconvex.*;
 import org.jbox2d.dynamics.contacts.*;
 import org.jbox2d.testbed.*;
@@ -14,9 +9,8 @@ import org.jbox2d.dynamics.*;
 import processing.serial.*;
 import generativedesign.*;
 
+/* SETTING VALUES -----------------------------------------------------------*/
 
-
-/*SETTING VALUES-----------------------------------------------------------*/
 Serial myPort; //Serial
 Physics physics; //BOXWRAP2D World
 Vec2 pointTop, pointMiddle; //Force Vector
@@ -38,9 +32,7 @@ String copyRightA = searchWord + " (Feb, " + day() + ", " + year() + ", " + hour
 String copyRightB = "http://en.wikipedia.org/wiki/" + searchWord;
 boolean goA, goB;
 
-
-
-/*VOID SETUP-----------------------------------------------------------*/
+/* MAIN -----------------------------------------------------------*/
 
 void setup() {
   size(800, 600);
@@ -59,9 +51,6 @@ void setup() {
   /* SERIAL */
 //  myPort=new Serial(this,Serial.list()[4],9600);
 }
-
-
-/*VOID DRAW-----------------------------------------------------------*/
 
 void draw() {
   background(0);
@@ -211,7 +200,7 @@ void draw() {
     }
   }
 
-/*-----------------------------------------------------------PARTICLES */
+/* PARTICLES ----------------------------------------------------------- */
   
   for (int i = 0; i < particles.size(); i++ ) { 
     Particle p = (Particle) particles.get(i);
@@ -295,14 +284,10 @@ void draw() {
   text(copyRightB, 10, 588);
 }
 
-/*-----------------------------------------------------------SERIAL EVENT */
-
 void serialEvent(Serial p){
   //変数xにシリアル通信で読み込んだ値を代入
   SerialValue = myPort.read();
 }
-
-/*-----------------------------------------------------------CREATE BOX */
 
 void createBox(String c, int p) {
   String count = c;
@@ -314,7 +299,6 @@ void createBox(String c, int p) {
   textLife.add(20*l);
   body = null;
 }
-
 
 void removeBox(int a) {
   String textCurrent = (String)(textList.get(a));

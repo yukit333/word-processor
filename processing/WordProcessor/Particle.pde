@@ -1,12 +1,4 @@
-// Learning Processing
-// Daniel Shiffman
-// http://www.learningprocessing.com
-
-// Example 23-2: Simple particle system with ArrayList
-
-// A simple Particle class
-class Particle {
-  
+class Particle {  
   float x;
   float y;
   float xspeed;
