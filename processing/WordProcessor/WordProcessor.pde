@@ -102,7 +102,6 @@ void draw() {
         
         if(myHTML2.size() != 0) {
           timerC = 0;
-          ArrayList myHTML = new ArrayList();
           textInner = null;
           goB = true;
           goA = false;
@@ -134,7 +133,6 @@ void draw() {
         
         if(myHTML.size() != 0) {
           timerC = 0;
-          ArrayList myHTML2 = new ArrayList();
           textInner2 = null;
           goA = true;
           goB = false;
@@ -301,8 +299,6 @@ void createBox(String c, int p) {
 }
 
 void removeBox(int a) {
-  String textCurrent = (String)(textList.get(a));
-  int textLength = textCurrent.length();
   textList.remove(a);
   Body Bodier = (Body)(boxList.get(a));
   physics.removeBody(Bodier);
@@ -317,7 +313,6 @@ void ParagraphSlicer(int a) {
     Body Bodier = (Body)(boxList.get(a));
     Vec2 posW2 = Bodier.getPosition();
     Vec2 posS2 = physics.worldToScreen(posW2);
-    float posA = Bodier.getAngle();
     for(int i = 0;i < textLength; i++) {
       String t = textCurrent.substring(i,i+1);
       int radX = ceil(random(0, textLength/2));
